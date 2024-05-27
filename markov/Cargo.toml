@@ -1,8 +1,8 @@
 [package]
 name = "shitpost_markov"
+version = "1.0.1"
 description = "Backend for training a Markov bot at compile-time."
 repository = "https://github.com/KaitlynEthylia/shitpost/tree/mistress/markov"
-version.workspace = true
 authors.workspace = true
 edition.workspace = true
 keywords.workspace = true

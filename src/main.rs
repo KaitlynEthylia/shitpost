@@ -4,7 +4,15 @@ include!(concat!(env!("OUT_DIR"), "/", "markov.rs"));
 
 fn main() -> Result<(), Box<dyn Error>> {
 	let content = markov::generate();
+	let content =
+		content.replace('@', r#"@\u200C"#).replace('"', r#"\""#);
 	let suffix = option_env!("SHITPOST_SUFFIX").unwrap_or_default();
+	let content = match content.rsplit_once("</p>") {
+		Some((a, b)) if content.starts_with("<p>") => {
+			format!("{a}{b}{suffix}</p>")
+		},
+		_ => format!("{content}{suffix}"),
+	};
 
 	let mut private_key_buf = String::new();
 	let private_key = env::args().nth(1);
@@ -19,24 +27,13 @@ fn main() -> Result<(), Box<dyn Error>> {
 		None => {
 			#[cfg(not(no_send))]
 			eprintln!("note: no private key received, printing output instead.\n");
-			println!("{content}{suffix}");
+			println!("{content}");
 			return Ok(());
 		},
 	};
 
 	#[cfg(not(no_send))]
 	{
-		let content = content.replace('"', r#"\""#);
-		let content = if content.ends_with("</p>") {
-			&content[..content.len() - 4]
-		} else {
-			&content
-		};
-		let close = if content.starts_with("<p>") {
-			"</p>"
-		} else {
-			""
-		};
 		reqwest::blocking::Client::new()
 			.post(env!("SHITPOST_OUT"))
 			.header("Authorization", format!("Bearer {private_key}"))
@@ -46,7 +43,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 {{
 					{}
                     "content_type": "text/markdown",
-                    "status": "{content}{suffix}{close}",
+                    "status": "{content}",
 					"visibility": "{}"
                 }}
                 "#,

@@ -2,7 +2,6 @@
 members = ["markov"]
 
 [workspace.package]
-version = "1.0.1"
 authors = ["Kaitlyn~Ethylia <kailyyn.ethylia@proton.me>"]
 edition = "2021"
 keywords = ["web", "terminal", "compiler"]
@@ -14,9 +13,9 @@ tokio = { version = "1.37.0", features = ["full"] }
 
 [package]
 name = "shitpost"
+version = "1.0.2"
 description = "A compile-time Markov bot creator for the Fediverse."
 repository = "https://github.com/KaitlynEthylia/shitpost"
-version.workspace = true
 authors.workspace = true
 edition.workspace = true
 keywords.workspace = true

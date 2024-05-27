@@ -8,7 +8,6 @@
 # Shitpost
 
 [![GitHub](https://img.shields.io/badge/Github-KaitlynEthylia%2Fshitpost-cec2fc?logo=github&style=for-the-badge)](https://github.com/KaitlynEthylia/shitpost)
-![Overengineered](https://custom-icon-badges.demolab.com/badge/Over-Engineered-f25788?logo=heart&style=for-the-badge)
 [![Crates.io](https://img.shields.io/crates/v/shitpost?color=%23f7b679&logo=rust&style=for-the-badge)](https://crates.io/crates/shitpost)
 
 A compile-time Markov bot creator for the Fediverse.
@@ -25,12 +24,12 @@ to train on.
 
 | Variable | Required | Description |
 | -------- | -------- | ----------- |
-| `$SHITPOST_IN` | `true` | The URL to retrieve posts from to train the bot. Training a bot on posts that aren't you're own is generally considered a 'dick move'. Don't be a dick. |
-| `$SHITPOST_KEY` | `false` | A private key with `read` permissions. If this is set, the bot will be able to train off of non-public posts. The key is only used whilst training the bot and is stored nowhere in the compiled binary. |
-| `$SHITPOST_OUT` | `false` | The URL to send new posts to. If not set then the bot will not be able to automatically send posts. |
-| `$SHITPOST_SUFFIX` | `false` | An optional suffix to append to each post, usually to indicate that the post was generated. |
-| `$SHITPOST_VISIBILITY` | `false` | A visibility to apply to all posts. Posts are public by default. Accepted value: `public`, `unlisted` or `private`. |
-| `$SHITPOST_CW` | `false` | A content warning to apply to all posts. |
+| `$SHITPOST_IN` | **✓** | The URL to retrieve posts from to train the bot. Training a bot on posts that aren't you're own is generally considered a 'dick move'. Don't be a dick. |
+| `$SHITPOST_KEY` | ✗ | A private key with `read` permissions. If this is set, the bot will be able to train off of non-public posts. The key is only used whilst training the bot and is stored nowhere in the compiled binary. |
+| `$SHITPOST_OUT` | ✗ | The URL to send new posts to. If not set then the bot will not be able to automatically send posts. |
+| `$SHITPOST_SUFFIX` | ✗ | An optional suffix to append to each post, usually to indicate that the post was generated. |
+| `$SHITPOST_VISIBILITY` | ✗ | A visibility to apply to all posts. Posts are public by default. Accepted value: `public`, `unlisted` or `private`. |
+| `$SHITPOST_CW` | ✗ | A content warning to apply to all posts. |
 
 > [!NOTE]
 > Compilation may take a long time, This is because requests for posts
