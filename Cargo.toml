@@ -1,0 +1,31 @@
+[workspace]
+members = ["markov"]
+
+[workspace.package]
+version = "1.0.0"
+authors = ["Kaitlyn~Ethylia <kailyyn.ethylia@proton.me>"]
+edition = "2021"
+keywords = ["web", "terminal", "compiler"]
+license = "JSON"
+
+[workspace.dependencies]
+reqwest = { version = "0.12.4", features = ["blocking"] }
+tokio = { version = "1.37.0", features = ["full"] }
+
+[package]
+name = "shitpost"
+description = "A compile-time Markov bot creator for the Fediverse."
+repository = "https://github.com/KaitlynEthylia/shitpost"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+keywords.workspace = true
+license.workspace = true
+
+[dependencies]
+rand =  "0.8.5"
+reqwest.workspace = true
+
+[build-dependencies]
+shitpost_markov = { version = "1.0.0", path = "markov" }
+tokio.workspace = true
