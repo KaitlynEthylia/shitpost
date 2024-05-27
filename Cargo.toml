@@ -2,7 +2,7 @@
 members = ["markov"]
 
 [workspace.package]
-version = "1.0.0"
+version = "1.0.1"
 authors = ["Kaitlyn~Ethylia <kailyyn.ethylia@proton.me>"]
 edition = "2021"
 keywords = ["web", "terminal", "compiler"]
@@ -27,5 +27,5 @@ rand =  "0.8.5"
 reqwest.workspace = true
 
 [build-dependencies]
-shitpost_markov = { version = "1.0.0", path = "markov" }
+shitpost_markov = { version = "1.0.1", path = "markov" }
 tokio.workspace = true
